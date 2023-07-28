@@ -28,6 +28,9 @@ Route::get('/home', function () {
 Route::get('/disposisi', function () {
     return view('disposisi');
 });
+Route::get('/no_surat', function () {
+    return view('no_surat');
+});
 
 //route resource
 Route::resource('/posts', \App\Http\Controllers\PostController::class);

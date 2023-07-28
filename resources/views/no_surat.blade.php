@@ -17,9 +17,8 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <h1>Home Page</h1>
+                        <h1>Halaman Pembuatan Nomor Surat</h1>
                         
-                        <a href="{{ url('/disposisi') }}" class="btn btn-md btn-success mb-3">Disposisi</a>
                         <a href="{{ url('/no_surat') }}" class="btn btn-md btn-success mb-3">Nomor Surat</a>
 
                     </div>
