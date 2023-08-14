@@ -37,7 +37,7 @@
                               @forelse ($surats as $surat)
                                 <tr>
                                     <!-- <td class="text-center">
-                                        <img src="{{ asset('/storage/surat/'.$post->image) }}" class="rounded" style="width: 150px">
+                                        <img src="{{ asset('/storage/surat/'.$surat->image) }}" class="rounded" style="width: 150px">
                                     </td> -->
                                     <td>{{ $surat->nomor }}</td>
                                     <!-- <td>{!! $surat->content !!}</td> -->
