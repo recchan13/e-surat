@@ -18,11 +18,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {    
-    /**
-     * index
-     *
-     * @return View
-     */
+    
     public function index(): View
     {
         //get posts

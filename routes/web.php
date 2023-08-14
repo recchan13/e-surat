@@ -34,3 +34,6 @@ Route::get('/no_surat', function () {
 
 //route resource
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
+
+//route resource
+Route::resource('/surats', \App\Http\Controllers\SuratController::class);
