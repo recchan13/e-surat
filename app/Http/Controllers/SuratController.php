@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 //import Model "Post
 use App\Models\Surat;
 
+use Illuminate\Http\Request;
+
 //return type View
 use Illuminate\View\View;
 
-use Illuminate\Http\Request;
+//return type redirectResponse
+use Illuminate\Http\RedirectResponse;
+
+//import Facade "Storage"
+use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\Response;
+
+
 
 class SuratController extends Controller
 {
@@ -41,11 +51,12 @@ class SuratController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'nomor'     => 'required',
-            'judul'     => 'required',
-            'unit'      => 'required',
-            'tujuan'    => 'required',
-            'posisi'    => 'required'
+            'nomor'         => 'required',
+            'judul'         => 'required',
+            'unit'          => 'required',
+            'tujuan'        => 'required',
+            'posisi'        => 'required',
+            'no_disposisi'  => 'nullable'
         ]);
 
         // //upload image
@@ -53,55 +64,40 @@ class SuratController extends Controller
         // $image->storeAs('public/surats', $image->hashName());
 
         //create post
-        Post::create([
-            'nomor'     => $nomor,
-            'judul'     => $judul,
-            'unit'      => $unit,
-            'tujuan'    => $tujuan,
-            'posisi'    => $posisi
+        Surat::create([
+            'nomor'         => $request->nomor,
+            'judul'         => $request->judul,
+            'unit'          => $request->unit,
+            'tujuan'        => $request->tujuan,
+            'posisi'        => $request->posisi,
+            'no_disposisi'  => $request->no_disposisi
         ]);
 
         //redirect to index
-        return redirect()->route('surat.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('surats.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
-    
-    // /**
-    //  * show
-    //  *
-    //  * @param  mixed $id
-    //  * @return View
-    //  */
+
+
     public function show(string $id): View
     {
         //get post by ID
-        $surats = Surat::findOrFail($id);
+        $surat = Surat::findOrFail($id);
 
         //render view with post
-        return view('surats.show', compact('surat'));
+        return view('surat.show', compact('surat'));
     }
 
-    // /**
-    //  * edit
-    //  *
-    //  * @param  mixed $id
-    //  * @return View
-    //  */
+
     public function edit(string $id): View
     {
         //get post by ID
-        $surats = Post::findOrFail($id);
+        $surat = Surat::findOrFail($id);
 
         //render view with post
-        return view('surats.edit', compact('surat'));
+        return view('surat.edit', compact('surat'));
     }
         
-    // /**
-    //  * update
-    //  *
-    //  * @param  mixed $request
-    //  * @param  mixed $id
-    //  * @return RedirectResponse
-    //  */
+  
     public function update(Request $request, $id): RedirectResponse
     {
         //validate form
@@ -110,7 +106,8 @@ class SuratController extends Controller
             'judul'     => 'required',
             'unit'      => 'required',
             'tujuan'    => 'required',
-            'posisi'    => 'required'
+            'posisi'    => 'required',
+            'no_disposisi'  => 'nullable'
         ]);
 
         //get post by ID
@@ -128,11 +125,12 @@ class SuratController extends Controller
 
             //update post with new image
             $surat->update([
-                'nomor'     => $request->nomor,
-                'judul'     => $request->judul,
-                'unit'      => $request->unit,
-                'tujuan'    => $request->tujuan,
-                'posisi'    => $request->posisi
+                'nomor'         => $request->nomor,
+                'judul'         => $request->judul,
+                'unit'          => $request->unit,
+                'tujuan'        => $request->tujuan,
+                'posisi'        => $request->posisi,
+                'no_disposisi'  => $request->no_disposisi
             ]);
 
         // } else {
@@ -160,7 +158,7 @@ class SuratController extends Controller
     //     $post = Post::findOrFail($id);
 
     //     //delete image
-    //     Storage::delete('public/posts/'. $post->image);
+    //     Storage::delete('public/surat/'. $surat->image);
 
     //     //delete post
     //     $post->delete();

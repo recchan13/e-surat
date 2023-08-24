@@ -14,49 +14,80 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('surats.update', $surat->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
-                            <!-- <div class="form-group">
-                                <label class="font-weight-bold">GAMBAR</label>
-                                <input type="file" class="form-control" name="image">
-                            </div> -->
-
+                            
                             <div class="form-group">
                                 <label class="font-weight-bold">NOMOR SURAT</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $post->title) }}" placeholder="B-..../Un.16">
+                                <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="nomor" value="{{ old('nomor', $surat->nomor) }}" placeholder="B-..../Un.16">
                             
                                 <!-- error message untuk title -->
-                                @error('title')
+                                <!-- @error('title')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                @enderror -->
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">JUDUL SURAT</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $post->title) }}" placeholder="Masukkan Jenis Surat">
+                                <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="judul" value="{{ old('judul', $surat->judul) }}" placeholder="Masukkan Jenis Surat">
                             
                                 <!-- error message untuk title -->
-                                @error('title')
+                                <!-- @error('title')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                @enderror -->
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">KONTEN</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="5" placeholder="Masukkan Konten Post">{{ old('content', $post->content) }}</textarea>
+                                <label class="font-weight-bold">UNIT PEMBUAT</label>
+                                <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="unit" value="{{ old('unit' , $surat->unit) }}" placeholder="Unit Pembuat Surat">
                             
                                 <!-- error message untuk content -->
-                                @error('content')
+                                <!-- @error('content')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                @enderror -->
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">TUJUAN SURAT</label>
+                                <input type="text" class="form-control @error('tujuan') is-invalid @enderror" name="tujuan" value="{{ old('tujuan' , $surat->tujuan) }}" placeholder="Unit Tujuan Surat">
+                            
+                                <!-- error message untuk content -->
+                                <!-- @error('content')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror -->
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">POSISI SURAT</label>
+                                <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="posisi" value="{{ old('posisi' , $surat->posisi) }}" placeholder="Posisi Surat Saat Ini">
+                            
+                                <!-- error message untuk content -->
+                                <!-- @error('content')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror -->
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">NOMOR DISPOSISI SURAT</label>
+                                <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="no_disposisi" value="{{ old('no_disposisi' , $surat->no_disposisi) }}" placeholder="Nomor Disposisi Surat">
+                            
+                                <!-- error message untuk content -->
+                                <!-- @error('content')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror -->
                             </div>
 
                             <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
