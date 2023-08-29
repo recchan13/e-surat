@@ -8,53 +8,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
 </head>
 <body style="background: lightgray">
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <!-- <div>
-                    <h3 class="text-center my-4">Tutorial Laravel 10 untuk Pemula</h3>
-                    <h5 class="text-center"><a href="https://santrikoding.com">www.santrikoding.com</a></h5>         
-                    <hr>
-                </div> -->
+                
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ url('/home') }}" class="btn btn-md btn-danger mb-3">KEMBALI</a>
-                        <a href="{{ route('surats.create') }}" class="btn btn-md btn-success mb-3">TAMBAH NOMOR SURAT</a>
+                        <a href="{{ route('disposisi.create') }}" class="btn btn-md btn-success mb-3">TAMBAH DISPOSISI</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">Nomor Surat</th>
-                                <th scope="col">Judul Surat</th>
+                                <th scope="col">Nomor Disposisi</th>
                                 <th scope="col">Unit Pembuat Surat</th>
                                 <th scope="col">Unit Tujuan Surat</th>
                                 <th scope="col">Posisi Surat</th>
-                                <th scope="col">Nomor Disposisi</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col">Surat Disposisi</th>
+                                <th scope="col">Surat Balasan</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($surats as $surat)
+                              @forelse ($disposisi as $disposisi)
                                 <tr>
                                     <!-- <td class="text-center">
                                         <img src="{{ asset('/storage/surat/'.$surat->image) }}" class="rounded" style="width: 150px">
                                     </td> -->
-                                    <!-- <td>{{ $surat->nomor }}</td> -->
-                                    <!-- <td>{!! $surat->content !!}</td> -->
-                                    <td>{{ $surat->nomor }}</td>
-                                    <td>{{ $surat->judul }}</td>
-                                    <td>{{ $surat->unit }}</td>
-                                    <td>{{ $surat->tujuan }}</td>
-                                    <td>{{ $surat->posisi }}</td>
-                                    <td>{{ $surat->no_disposisi }}</td>
+                                    <td>{{ $disposisi->nomor }}</td>
+                                    <td>{{ $disposisi->unit }}</td>
+                                    <td>{{ $disposisi->tujuan }}</td>
+                                    <td>{{ $disposisi->posisi }}</td>
+                                    <td>{{ $disposisi->id_surat_disposisi }}</td>
+                                    <td>{{ $disposisi->id_surat_balasan }}</td>
 
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('surats.destroy', $surat->id) }}" method="POST">
-                                            <a href="{{ route('surats.show', $surat->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ route('surats.edit', $surat->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('disposisi.destroy', $disposisi->id) }}" method="POST">
+                                            <a href="{{ route('disposisi.show', $disposisi->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('disposisi.edit', $disposisi->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
@@ -63,12 +55,12 @@
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
-                                      Data Surat belum Tersedia.
+                                      Data belum Tersedia.
                                   </div>
                               @endforelse
                             </tbody>
                         </table>  
-                        {{ $surats->links() }}
+                        {{ $disposisi->links() }}
                     </div>
                 </div>
             </div>

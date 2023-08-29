@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 //import Model "Post
-use App\Models\Surat;
+use App\Models\Disposisi;
 
 use Illuminate\Http\Request;
 
@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 
 
-
-class SuratController extends Controller
+class DisposisiController extends Controller
 {
     /**
     * index
@@ -30,15 +29,15 @@ class SuratController extends Controller
    public function index(): View
    {
        //get posts
-       $surats = Surat::latest()->paginate(5);
+       $disposisi = Disposisi::latest()->paginate(5);
 
        //render view with posts
-       return view('surat.index', compact('surats'));
+       return view('disposisi.index', compact('disposisi'));
    }
    
    public function create(): View
    {
-       return view('surat.create');
+       return view('disposisi.create');
     }
  
     /**
@@ -52,11 +51,11 @@ class SuratController extends Controller
         //validate form
         $this->validate($request, [
             'nomor'         => 'required',
-            'judul'         => 'required',
             'unit'          => 'required',
             'tujuan'        => 'required',
             'posisi'        => 'required',
-            'no_disposisi'  => 'nullable'
+            'id_surat_disposisi'    => 'required',
+            'id_surat_balasan'      => 'required'
         ]);
 
         // //upload image
@@ -64,37 +63,37 @@ class SuratController extends Controller
         // $image->storeAs('public/surats', $image->hashName());
 
         //create post
-        Surat::create([
+        Disposisi::create([
             'nomor'         => $request->nomor,
-            'judul'         => $request->judul,
             'unit'          => $request->unit,
             'tujuan'        => $request->tujuan,
             'posisi'        => $request->posisi,
-            'no_disposisi'  => $request->no_disposisi
+            'id_surat_disposisi'    => $request->id_surat_disposisi,
+            'id_surat_balasan'      => $request->id_surat_balasan
         ]);
 
         //redirect to index
-        return redirect()->route('surats.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('disposisi.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
 
     public function show(string $id): View
     {
         //get post by ID
-        $surat = Surat::findOrFail($id);
+        $disposisi = Disposisi::findOrFail($id);
 
         //render view with post
-        return view('surat.show', compact('surat'));
+        return view('disposisi.show', compact('disposisi'));
     }
 
 
     public function edit(string $id): View
     {
         //get post by ID
-        $surat = Surat::findOrFail($id);
+        $disposisi = Disposisi::findOrFail($id);
 
         //render view with post
-        return view('surat.edit', compact('surat'));
+        return view('disposisi.edit', compact('disposisi'));
     }
         
   
@@ -102,16 +101,16 @@ class SuratController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'nomor'     => 'required',
-            'judul'     => 'required',
-            'unit'      => 'required',
-            'tujuan'    => 'required',
-            'posisi'    => 'required',
-            'no_disposisi'  => 'nullable'
+            'nomor'         => 'required',
+            'unit'          => 'required',
+            'tujuan'        => 'required',
+            'posisi'        => 'required',
+            'id_surat_disposisi'    => 'required',
+            'id_surat_balasan'      => 'nullable'
         ]);
 
         //get post by ID
-        $surat = Surat::findOrFail($id);
+        $disposisi = Disposisi::findOrFail($id);
 
         //check if image is uploaded
         // if ($request->hasFile('image')) {
@@ -124,13 +123,14 @@ class SuratController extends Controller
             // Storage::delete('public/posts/'.$surat->image);
 
             //update post with new image
-            $surat->update([
+            $disposisi->update([
                 'nomor'         => $request->nomor,
-                'judul'         => $request->judul,
                 'unit'          => $request->unit,
                 'tujuan'        => $request->tujuan,
                 'posisi'        => $request->posisi,
-                'no_disposisi'  => $request->no_disposisi
+                'no_disposisi'  => $request->no_disposisi,
+                'id_surat_disposisi'    => $request->id_surat_disposisi,
+                'id_surat_balasan'      => $request->id_surat_balasan
             ]);
 
         // } else {
@@ -143,7 +143,7 @@ class SuratController extends Controller
         // }
 
         //redirect to index
-        return redirect()->route('surats.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('disposisi.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     // /**
@@ -155,15 +155,15 @@ class SuratController extends Controller
     public function destroy($id): RedirectResponse
     {
         //get post by ID
-        $surat = Surat::findOrFail($id);
+        $disposisi = Disposisi::findOrFail($id);
 
         //delete image
         // Storage::delete('public/surat/'. $surat->image);
 
         //delete post
-        $surat->delete();
+        $disposisi->delete();
 
         //redirect to index
-        return redirect()->route('surats.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('disposisi.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

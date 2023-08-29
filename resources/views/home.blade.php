@@ -19,9 +19,8 @@
                     <div class="card-body">
                         <h1>Home Page</h1>
                         
-                        <a href="{{ url('/home') }}" class="btn btn-md btn-success mb-3">Disposisi</a>
+                        <a href="{{ route('disposisi.index') }}" class="btn btn-md btn-success mb-3">Disposisi</a>
                         <a href="{{ route('surats.index') }}" class="btn btn-md btn-success mb-3">Nomor Surat</a>
-
                     </div>
                 </div>
             </div>

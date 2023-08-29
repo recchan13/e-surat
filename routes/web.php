@@ -25,9 +25,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/disposisi', function () {
-    return view('disposisi');
-});
+// Route::get('/disposisi', function () {
+//     return view('disposisi');
+// });
 Route::get('/no_surat', function () {
     return view('no_surat');
 });
@@ -37,3 +37,6 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
 //route resource
 Route::resource('/surats', \App\Http\Controllers\SuratController::class);
+
+//route resource
+Route::resource('/disposisi', \App\Http\Controllers\DisposisiController::class);
