@@ -18,7 +18,29 @@
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
                         <h1>Login</h1>
+                        <div class="form-group">
+                            <label class="font-weight-bold">USERNAME</label>
+                            <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="judul" value="{{ old('judul') }}" placeholder="username">
                         
+                            <!-- error message untuk judul -->
+                            @error('nomor')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">PASSWORD</label>
+                            <input type="text" class="form-control @error('nomor') is-invalid @enderror" name="unit" value="{{ old('unit') }}" placeholder="password">
+                        
+                            <!-- error message untuk judul -->
+                            @error('nomor')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <a href="{{ url('/home') }}" class="btn btn-md btn-success mb-3">Login</a>
 
                     </div>
