@@ -1,16 +1,75 @@
 @include('include.head')
 
-{{-- <body>
+<body>
 
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
     
-</body> --}}
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
-<body style="background: lightgray">
+        @include('include.navbar')
+        @include('include.sidebar')
 
-    @include('include.navbar')
-    @include('include.sidebar')
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
 
-    <div class="container mt-5">
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+
+    {{-- <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 
@@ -63,7 +122,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>  --}}
 
     <script>
         //message with toastr
@@ -77,6 +136,7 @@
             
         @endif
     </script>
+    @include('include.script')
 
 </body>
 </html>

@@ -14,7 +14,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                
+            
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ url('/home') }}" class="btn btn-md btn-danger mb-3">KEMBALI</a>
@@ -53,7 +53,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                              @empty
+                                @empty
                                   <div class="alert alert-danger">
                                       Data belum Tersedia.
                                   </div>

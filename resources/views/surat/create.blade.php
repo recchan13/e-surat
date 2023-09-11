@@ -15,7 +15,7 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <form action="{{ route('surats.store') }}" method="POST" enctype="multipart/form-data">
-                        
+                            
                             @csrf
 
                             <div class="form-group">
