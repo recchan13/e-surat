@@ -14,20 +14,7 @@
 @include('include.head')
 
 <body>
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
+    @include('include.preloader')    
     
     <!--**********************************
         Main wrapper start
@@ -53,6 +40,7 @@
                                     <p></p>
                                     <a href="{{ route('surats.index') }}" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Surat Biasa</a>
                                     <a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Surat Mundur</a>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
@@ -64,6 +52,7 @@
                                     <span class="display-5"><i class="icon-grid gradient-9-text"></i></span>
                                     <h2 class="mt-3">Disposisi</h2>
                                     <p></p><a href="javascript:void()" class="btn gradient-9 btn-lg border-0 btn-rounded px-5">Lacak Disposisi</a>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

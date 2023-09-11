@@ -1,15 +1,7 @@
 @include('include.head')
 
 <body>
-
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
-    
+    @include('include.preloader')    
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -38,38 +30,25 @@
             </div>
             <!-- #/ container -->
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
-        
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
+    @include('include.script')
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
+    <script>
+        //message with toastr
+        @if(session()->has('success'))
+        
+            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
 
+        @elseif(session()->has('error'))
 
-    {{-- <div class="container mt-5">
+            toastr.error('{{ session('error') }}', 'GAGAL!'); 
+            
+        @endif
+    </script>
+
+</body>
+
+{{-- <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 
@@ -123,20 +102,3 @@
             </div>
         </div>
     </div>  --}}
-
-    <script>
-        //message with toastr
-        @if(session()->has('success'))
-        
-            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
-
-        @elseif(session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!'); 
-            
-        @endif
-    </script>
-    @include('include.script')
-
-</body>
-</html>

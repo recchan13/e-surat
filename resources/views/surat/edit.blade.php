@@ -7,15 +7,63 @@
     <title>Edit Data Post - SantriKoding.com</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head> --}}
-
+{{-- 
 @include('include.head')
 
+<body>
+    @include('include.preloader')    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
+        @include('include.navbar')
+        @include('include.sidebar')
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+
+            </div>
+            <!-- #/ container -->
+        </div>
+    </div>
+    @include('include.script')
+
+    <script>
+        //message with toastr
+        @if(session()->has('success'))
+        
+            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+
+        @elseif(session()->has('error'))
+
+            toastr.error('{{ session('error') }}', 'GAGAL!'); 
+            
+        @endif
+    </script>
+
+</body> --}}
+
+@include('include.head')
 
 <body style="background: lightgray">
 
     @include('include.navbar')
-@include('include.sidebar')
+    @include('include.sidebar')
 
     <div class="container mt-5 mb-5">
         <div class="row">
